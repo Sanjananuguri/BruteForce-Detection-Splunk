@@ -1,17 +1,18 @@
-Brute Force Login Detection Using Splunk
+# Brute Force Login Detection Using Splunk
 
-Project Title
+# Project Title
 Detecting Simulated Brute Force Attacks Using Splunk on Windows
 
-Objective
+
+# Objective
 To simulate failed login attempts (brute-force attack behavior) on a Windows system, ingest the logs into Splunk, and set up a detection alert.
 
-Tools Used
+# Tools Used
 •	Splunk Enterprise (Free Trial)
 •	Windows OS
 •	Notepad (for log creation)
 
-Project Structure
+# Project Structure
 BruteForce-Detection-Splunk/
 ├── auth_simulation.log
 ├── screenshots/
@@ -21,8 +22,8 @@ BruteForce-Detection-Splunk/
 │   └── triggered-alert.png
 └── README.md (this file)
 
-Steps Performed
-1. Created a Log File with Fake Login Failures
+# Steps Performed
+# 1. Created a Log File with Fake Login Failures
 Created a simulated log file:
 [2025-06-06 10:22:01] Failed login for user: admin from IP 192.168.0.5
 [2025-06-06 10:22:02] Failed login for user: admin from IP 192.168.0.5
@@ -32,20 +33,20 @@ Created a simulated log file:
 [2025-06-06 10:22:06] Successful login for user: admin from IP 192.168.0.5
 Saved as C:\logs\auth_simulation.log
 
-3. Ingested Log File into Splunk
+# 2. Ingested Log File into Splunk
 •	Opened Splunk at http://localhost:8000
 •	Navigated to Settings > Add Data
 •	Uploaded the .log file
 •	Indexed into the main index
-4. Ran Search Query in Splunk
+# 3. Ran Search Query in Splunk
 Searched for brute-force style patterns:
 index=* "Failed login" | stats count by host, _time | where count > 4
-5. Created an Alert in Splunk
+# 4. Created an Alert in Splunk
 •	Triggered when the number of failed logins exceeded 4
 •	Alert name: Windows Brute Force Simulation
 •	Configured action to log and optionally email when triggered
 
-Screenshots
+# Screenshots
 Will be added soon for the following:
 •	Log upload screen
  
@@ -56,7 +57,7 @@ Will be added soon for the following:
 •	Triggered alert log
 
  
-What I Learned
+# What I Learned
 •	Basics of Splunk setup on Windows
 •	How to simulate log data
 •	How to ingest data into Splunk
